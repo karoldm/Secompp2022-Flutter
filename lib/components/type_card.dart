@@ -9,9 +9,11 @@ class TypeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return Container(
-      width: 65,
-      height: 24,
+      width: size.width * 0.15,
+      height: size.width * 0.06,
       margin: const EdgeInsets.only(top: 5, bottom: 5),
       alignment: Alignment.center,
       decoration: BoxDecoration(
@@ -19,7 +21,7 @@ class TypeCard extends StatelessWidget {
       child: Text(type.name,
           style: GoogleFonts.montserrat(
             color: Colors.white,
-            fontSize: 14,
+            fontSize: size.width * 0.03,
           )),
     );
   }

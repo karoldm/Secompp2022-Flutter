@@ -11,6 +11,8 @@ class EvolutionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return Container(
       decoration: BoxDecoration(
           color: Colors.grey, borderRadius: BorderRadius.circular(4.25)),
@@ -30,8 +32,8 @@ class EvolutionCard extends StatelessWidget {
                 padding: const EdgeInsets.only(right: 5),
                 child: Image.network(
                   "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${evolution.pokemonId}.png",
-                  width: 96,
-                  height: 96,
+                  width: size.width * 0.2,
+                  height: size.width * 0.2,
                 ),
               ),
               Expanded(

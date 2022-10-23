@@ -12,11 +12,13 @@ class PokemonCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return InkWell(
       onTap: onTap,
       child: Container(
-        width: 200,
-        height: 200,
+        width: size.width * 0.4,
+        height: size.height * 0.4,
         decoration: BoxDecoration(
             color: pokemon.types.first.colors.primary,
             borderRadius: BorderRadius.circular(10)),
@@ -28,29 +30,31 @@ class PokemonCard extends StatelessWidget {
               Text("#${pokemon.pokedexId}",
                   style: GoogleFonts.montserrat(
                       fontWeight: FontWeight.bold,
-                      fontSize: 22,
+                      fontSize: size.width * 0.05,
                       color: Colors.white)),
               Text(
                 capitalizeWords(pokemon.name, "-", replace: " "),
                 style: GoogleFonts.montserrat(
                     fontWeight: FontWeight.bold,
-                    fontSize: 22,
+                    fontSize: size.width * 0.05,
                     color: Colors.white),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children:
-                        pokemon.types.map((e) => TypeCard(type: e)).toList(),
-                  ),
-                  Image.network(
-                    pokemon.image,
-                    width: 94,
-                    height: 94,
-                  )
-                ],
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children:
+                          pokemon.types.map((e) => TypeCard(type: e)).toList(),
+                    ),
+                    Image.network(
+                      pokemon.image,
+                      width: size.width * 0.2,
+                      height: size.height * 0.2,
+                    )
+                  ],
+                ),
               )
             ],
           ),
